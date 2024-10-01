@@ -11,13 +11,29 @@ This GitHub repository contains all content of the dataMinds session on MLOps on
 Make sure you meet the following checklist:
 [] An Azure subscription. Typically obtained via a free trial or VSE program.
 
-### Deploying the infrastructure
+### Deploying the infrastructure via TerraForm
 
-`terraform init` to initialize the repository.
+In order to have a consistent setup the used infrastructure is provided via TerraForm.
 
-`terraform apply` to apply everything.
+This includes the following resources:
 
-`terraform destroy` to remove the infrastructure.
+- A databricks workspace
+- A storage account with hierarchical namespace enabled
+- A Unity Catalog account coupled to this storage account and databricks.
+
+In order to have this deployment automated you should first [install terraform following their instructions](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/install-cli).
+
+Once installed you need to run following steps:
+
+0. `cd` into the `infra` folder. Here you will have all needed code.
+1. Change the `terraform.tfvars` to have your variables in there.
+2. Run `terraform init`: This downloads all required providers.
+3. (optional) Run `terraform plan -var-file="terraform.tfvars"`: This will validate your setup and show you all the changes that are about to be made.
+4. Run `terraform plan -var-file="terraform.tfvars"`: This will deploy all infrastructure to your Azure subscription in a resource group `rg-<prefix>-<project_name>` in the region `region` as specified in the tfvars. The deploy should take around 5 minutes to complete.
+
+Congratulations, your infrastructure is now completely set up!
+
+Once you are done you can run `terraform destroy -var-file="terraform.tfvars` to remove the infrastructure.
 
 > Note: You need to be an account admin on databricks to create the metastore. See the [Azure docs](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/automate).
 
