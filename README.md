@@ -11,6 +11,16 @@ This GitHub repository contains all content of the dataMinds session on MLOps on
 Make sure you meet the following checklist:
 [] An Azure subscription. Typically obtained via a free trial or VSE program.
 
+### Deploying the infrastructure
+
+`terraform init` to initialize the repository.
+
+`terraform apply` to apply everything.
+
+`terraform destroy` to remove the infrastructure.
+
+> Note: You need to be an account admin on databricks to create the metastore. See the [Azure docs](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/automate).
+
 ## References
 
 The work in this repository is based on the ideas found in the following sources:
@@ -24,7 +34,7 @@ The work in this repository is based on the ideas found in the following sources
 
 ## License
 
-This code and content is released under the [unlicense](https://unlicense.org/) license.
+This code and content is released under the [unlicense license](https://unlicense.org/).
 
 You are free to do whatever you want with this code: Copy it, sell it, brag at your grandparents. We will not stop you.
 
