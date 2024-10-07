@@ -6,7 +6,7 @@
 
 # Here we re-use our cleaned data
 # In reality this will be data coming in from a data pipeline
-input_data = spark.read.table("main.mlops_demo.customer_churn_cleaned").drop("churn")
+input_data = spark.read.table("main.mlops_demo.customer_churn_cleaned").select('customer_id').limit(10)
 display(input_data)
 
 # COMMAND ----------
@@ -34,7 +34,7 @@ client = MlflowClient()
 from databricks.feature_store import FeatureStoreClient
 
 fs = FeatureStoreClient()
-logged_model = 'runs:/e5c52ce065e24ae9bb91cf02f237b82f/chrun_prediction'
+logged_model = f'models:/{model_name}/3'
 
 # This model was packaged by Feature Store.
 # To retrieve features prior to scoring, call FeatureStoreClient.score_batch.
