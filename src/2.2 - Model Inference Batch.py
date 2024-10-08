@@ -26,7 +26,6 @@ mlflow.set_registry_uri("databricks-uc")
 client = MlflowClient()
 # Name your UC model
 model_name = "main.mlops_demo.churn_model"
-client = MlflowClient()
 
 # COMMAND ----------
 
