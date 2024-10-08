@@ -41,6 +41,6 @@ def main():
     churn_data = DataLake().get_dataset("churn")
     FeatureHandler(churn_data).create_features()
     churn_model = MyChurnModel().get_model()
-    churn_model.train(churn_data)
+    churn_model.predict(churn_data)
     return churn_model
 
